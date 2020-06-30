@@ -21,24 +21,23 @@ const array = [1, 2, 'Добро пожаловать.', 4, 5, 6];
 // Решение
 
 
-const _some = (array, callback) => {
 
+const _some = (array, callback) => {
 if (!Array.isArray(array)) {
   throw new Error("argument not array!")
 }
 else if (typeof callback !== 'function'){
   throw new Error("argument not function!")
 } else {
-  let result = false;
   const len = array.length;
   for (let item = 0; item < len; item++) {
-    if (callback(array[item], item, array)) continue;
-    result = true;
+    if (callback(array[item], item, array)) {
+      return true;
+    }
   }
-  return result;
+  return false;
 }
 };
-
 
 const result = _some(array, (element, item, arrayRef) => {
     console.log(`${item}:`, item, arrayRef);

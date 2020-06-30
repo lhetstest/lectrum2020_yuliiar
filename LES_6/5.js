@@ -17,24 +17,23 @@
  */
 
 const array = [1, 2, 3, 4, 5];
-const INITIAL_ACCUMULATOR = 6;
 
+const INITIAL_ACCUMULATOR = 6;
 // Решение
 
-function _reduce(array, callback) {
-    
-if (!Array.isArray(array)) {
-  throw new Error("argument not array!")
-}
-else if (typeof callback !== 'function'){
-  throw new Error("argument not function!")
-} else {
-  let memory = 0
-  for (let item = 0; item < array.length; item++) {
-     memory = callback(memory, array[item], item, array)        
+const _reduce(array, callback, startValue) => {
+  if (!Array.isArray(array)) {
+    throw new Error("argument not array!");
+  } else if (typeof callback !== "function") {
+    throw new Error("argument not function!");
+  } else {
+    let length = array.length;
+    let result = startValue ?? array[0];
+    for (let item = 0; item < length; item++) {
+      memory = callback(memory, array[item], item, array);
+    }
+    return result;
   }
-  return memory;
-}
 }
 
 

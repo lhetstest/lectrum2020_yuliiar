@@ -21,21 +21,18 @@ const array = [1,23,"5",3,5,7];
 // Решение
 
 const _every = (array, callback) => {
-
-  
 if (!Array.isArray(array)) {
   throw new Error("argument not array!")
-}
-else if (typeof callback !== 'function'){
+} else if (typeof callback !== 'function'){
   throw new Error("argument not function!")
 } else {
-  let result = true;
   const len = array.length;
   for (let item = 0; item < len; item++){
-    if(callback(array[item], item, array)) continue;
-      result = false;
+    if(callback(array[item], item, array)) {
+      return false;
+    }
   } 
-  return result;
+  return true;
 }
 }; 
 
